@@ -31,7 +31,7 @@ services:
     server:
         container_name: ssadmin-server
         build:
-            context: ./src/springboot/pom.xml
+            context: ./src/springboot-server/
         image: ssadmin-server
         restart: unless-stopped
         ports:
@@ -46,7 +46,7 @@ services:
     web:
         container_name: ssadmin-web
         build:
-            context: ./src/vue
+            context: ./src/vue-web
         image: ssadmin-web
         restart: unless-stopped
         ports:
