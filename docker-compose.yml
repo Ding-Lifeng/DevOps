@@ -31,7 +31,7 @@ services:
     server:
         container_name: ssadmin-server
         build:
-            context: ./src/springboot/
+            context: ./src/springboot/pom.xml
         image: ssadmin-server
         restart: unless-stopped
         ports:
