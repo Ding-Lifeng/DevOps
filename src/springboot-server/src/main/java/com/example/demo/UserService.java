@@ -31,7 +31,7 @@ public class UserService {
 
     @Transactional
     public void addUser(User user) {
-        user.setPassword(getMD5(user.getPassword(),"我是增加的辅助信息"));
+        user.setPassword(getMD5(user.getPassword(),"辅助信息"));
         userMapper.insertUser(user);
     }
 
@@ -39,10 +39,15 @@ public class UserService {
         User user = userMapper.findUserByUsername(username);
         if (user != null) {
             // 验证密码
-            String saltedPassword = getMD5(password, "我是增加的辅助信息");
+            String saltedPassword = getMD5(password, "辅助信息");
             return saltedPassword.equals(user.getPassword());
         }
         return false;
+    }
+
+    public int findUserUid(String username){
+        User user = userMapper.findUserByUsername(username);
+        return user.getUid();
     }
 }
 

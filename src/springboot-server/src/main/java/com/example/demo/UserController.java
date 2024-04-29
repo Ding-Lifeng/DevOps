@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/todoList")
 public class UserController {
 
     @Autowired
@@ -25,9 +25,11 @@ public class UserController {
     public Map<String, Object> login(@RequestBody User loginUser) {
         Map<String, Object> result = new HashMap<>();
         boolean success = userService.loginUser(loginUser.getUsername(), loginUser.getPassword());
+        int uid = 0;
 
         if (success) {
-            String token = JwtUtil.generateToken(loginUser.getUsername());
+            uid = userService.findUserUid(loginUser.getUsername());
+            String token = JwtUtil.generateToken(Integer.toString(uid));
             result.put("success", true);
             result.put("message", "登录成功");
             result.put("token", token);
@@ -37,16 +39,6 @@ public class UserController {
         }
 
         return result;
-    }
-
-    @GetMapping("/info")
-    public ResponseEntity<?> getUserInfo(@RequestHeader("Authorization") String token) {
-        try {
-            User userInfo = userService.getUserInfoByToken(token);
-            return ResponseEntity.ok(userInfo);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        }
     }
 }
 

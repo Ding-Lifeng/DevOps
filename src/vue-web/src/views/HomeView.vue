@@ -26,12 +26,12 @@ export default {
   },
   methods: {
     submitForm() {
-      axios.post('/api/user/login', this.loginForm)
+      axios.post('/api/todoList/login', this.loginForm)
           .then(response => {
             if(response.data.success) {
               this.$message.success('登录成功');
               localStorage.setItem('token', response.data.token);
-              // 这里可以进行路由跳转或其他操作
+              this.$router.push({path:'/todolist'})
             } else {
               this.$message.error(response.data.message);
             }

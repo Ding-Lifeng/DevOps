@@ -2,7 +2,7 @@
   <div class="navbar">
     <router-link to="/">登录界面</router-link>
     <router-link to="/add">添加用户</router-link>
-    <router-link to="/about">用户页面</router-link>
+<!--    <router-link to="/todolist">待办事项</router-link>-->
   </div>
 </template>
 
@@ -10,7 +10,6 @@
 </script>
 
 <style scoped>
-/* 后续会添加样式 */
 </style>
 
 
