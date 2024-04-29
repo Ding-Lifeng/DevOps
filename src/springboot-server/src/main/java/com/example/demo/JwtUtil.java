@@ -28,7 +28,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    public static String getUsernameFromToken(String token) throws Exception {
+    public static String getUidFromToken(String token) throws Exception {
         try {
             System.out.println(token);
             Jws<Claims> claimsJws = Jwts.parser().setSigningKey(KEY).parseClaimsJws(token);

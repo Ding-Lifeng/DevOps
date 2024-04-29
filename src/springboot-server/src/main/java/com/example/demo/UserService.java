@@ -44,18 +44,6 @@ public class UserService {
         }
         return false;
     }
-
-    public User getUserInfoByToken(String token) throws Exception {
-        // 解析Token获取用户名
-        String username = JwtUtil.getUsernameFromToken(token);
-
-        // 根据用户名获取用户信息
-        User user = userMapper.findUserByUsername(username);
-        if (user == null) {
-            throw new Exception("用户不存在");
-        }
-        return user;
-    }
 }
 
 
