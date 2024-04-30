@@ -16,7 +16,16 @@ services:
             - ./src/sql/ssadmin_init.sql:/docker-entrypoint-initdb.d/ssadmin_init.sql:ro
         networks:
             - my_network
-
+    phpmyadmin:
+        container_name: test-phpmyadmin
+        image: phpmyadmin/phpmyadmin:4.9
+        restart: always
+        ports:
+            - "8888:80"
+        environment:
+            PMA_HOST: ssadmin-mysql
+        networks:
+            - my_network
     server:
         container_name: ssadmin-server
         build:
