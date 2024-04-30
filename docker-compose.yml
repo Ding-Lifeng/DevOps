@@ -9,8 +9,8 @@ services:
         ports:
             - "3306:3306"
         environment:
-            MYSQL_DATABASE: ${MYSQL_DATABASE:-cms}
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-Ff20010610}
+            MYSQL_DATABASE: ${MYSQL_DATABASE:-softdev}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-Tt010610}
         volumes:
             - mysql:/var/lib/mysql/
             - ./src/sql/ssadmin_init.sql:/docker-entrypoint-initdb.d/ssadmin_init.sql:ro
@@ -38,7 +38,7 @@ services:
             - my_network
         environment:
             JAVA_OPTS: ${JAVA_OPTS:- -Xms512m -Xmx512m -Djava.security.egd=file:/dev/./urandom}
-            ARGS: --spring.datasource.url=${DATASOURCE_URL:-jdbc:mysql://ssadmin-mysql:3306/cms?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true} --spring.datasource.username=${DATASOURCE_USERNAME:-root} --spring.datasource.password=${DATASOURCE_PASSWORD:-Ff20010610}
+            ARGS: --spring.datasource.url=${DATASOURCE_URL:-jdbc:mysql://ssadmin-mysql:3306/softdev?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true} --spring.datasource.username=${DATASOURCE_USERNAME:-root} --spring.datasource.password=${DATASOURCE_PASSWORD:-Tt010610}
         depends_on:
             - mysql
     web:
